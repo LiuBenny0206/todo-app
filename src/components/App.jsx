@@ -12,7 +12,7 @@ function App() {
 
   const addNote = (newNoteContent) => {
     const newNote = {
-      id: newNoteContent.length,
+      id: Date.now(),
       content: newNoteContent,
       complete: false
     };
@@ -52,6 +52,10 @@ function App() {
   const deleteNote = (id) => {
     setNotes(notes.filter(note => note.id !== id));
   };
+
+  const deleteNotesCompleted = () => {
+    setNotes(notes.filter(note =>!note.complete));
+  }
 
 
 
@@ -95,6 +99,7 @@ function App() {
       <NoteState 
         count={count}
         setState={setState}
+        deleteNotesCompleted={deleteNotesCompleted}
       />
     </div>
   );

@@ -12,7 +12,7 @@ function NoteState(props){
                         <button className="text-sm hover:text-white focus:text-sky-500" onClick={() => props.setState('active')}>Active</button>
                         <button className="text-sm hover:text-white focus:text-sky-500" onClick={() => props.setState('completed')}>Completed</button>
                     </div>
-                    <button className="text-xs text-gray-500 hover:text-white ">Clear Completed</button>
+                    <button className="text-xs text-gray-500 hover:text-white " onClick={props.deleteNotesCompleted}>Clear Completed</button>
             </div>
         </div>
     );
