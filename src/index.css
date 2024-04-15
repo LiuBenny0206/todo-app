@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hover-border:hover {
+    border-image: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) 1;
+    border-radius: 9999px;  
+}
