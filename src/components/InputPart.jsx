@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import UpperLightBg from "../images/bg-desktop-light.jpg";
 import UpperDarkBg from "../images/bg-desktop-dark.jpg";
 import { ReactComponent as SunIcon } from "../images/icon-sun.svg";
@@ -8,12 +8,14 @@ function InputPart({ isDarkMode, toggleDarkMode, addNote }) {
   const [note, setNote] = useState({ content: "" });
 
   function handleInput(event) {
-    setNote({content: event.target.value});
+    setNote({ content: event.target.value });
   }
+
   function handleSubmit(event) {
-    if (note.content.trim()){
+    event.preventDefault();  // 防止表单默认提交行为
+    if (note.content.trim()) {
       addNote(note.content);
-      setNote({content: ""});
+      setNote({ content: "" });  // 清空输入框
     }
   }
 
@@ -28,22 +30,22 @@ function InputPart({ isDarkMode, toggleDarkMode, addNote }) {
             <MoonIcon onClick={toggleDarkMode} />
           )}
         </div>
-        <div className="w-1/3"> 
+        <form className="w-1/3" onSubmit={handleSubmit}>
           <label className="bg-white w-full flex flex-row items-center dark:bg-gray-800">
-              <button 
-                className="w-5 h-5 rounded-full border-2 border-gray-500 bg-transparent relative left-5"
-                onClick={handleSubmit}
-              >
-              </button>
-              <input 
-                className="bg-white rounded w-full h-12 px-10 py-5 outline-0 dark:bg-gray-800 dark:text-white" 
-                type="text" 
-                placeholder="Create a new todo..."
-                onChange={handleInput}
-                value={note.content}
-              />
+            <button 
+              className="w-5 h-5 rounded-full border-2 border-gray-500 bg-transparent relative left-5"
+              type="submit"  // 指定按钮类型为submit
+            >
+            </button>
+            <input 
+              className="bg-white rounded w-full h-12 px-10 py-5 outline-0 dark:bg-gray-800 dark:text-white" 
+              type="text" 
+              placeholder="Create a new todo..."
+              onChange={handleInput}
+              value={note.content}
+            />
           </label>
-        </div>
+        </form>
       </div>
     </section>
   );
