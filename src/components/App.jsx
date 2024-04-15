@@ -5,17 +5,49 @@ import NoteState from "./NoteState";
 import '../output.css';
 
 function App() {
-  const [notes, setNotes] = useState([]); // notes 是存储所有笔记的数组
-  const count = notes.length; // count 是存储所有笔记的数组的长度
+  const [notes, setNotes] = useState([]);
+  const [state, setState] = useState('all');
+  
+  const count = (notes.filter(note => !note.complete).length);
 
   const addNote = (newNoteContent) => {
     const newNote = {
-      id: Date.now(), // 用时间戳作为简单的唯一 ID
+      id: newNoteContent.length,
       content: newNoteContent,
+      complete: false
     };
     setNotes([...notes, newNote]);
     console.log(notes);
   };
+
+  const toggleCompletion = (id) => {
+    const updatedNotes = notes.map((note) => {
+      if (note.id === id) {
+        return {
+         ...note,
+          complete:!note.complete
+        };
+      }
+      return note;
+    });
+    setNotes(updatedNotes);
+  }
+
+  const getStateNotes = () => {
+    switch (state) {
+      case 'all':
+        return notes;
+      case 'active':
+        return notes.filter((note) =>!note.complete);
+      case 'completed':
+        return notes.filter((note) => note.complete);
+      default:
+        return notes;
+    }
+  }
+
+
+
 
   const deleteNote = (id) => {
     setNotes(notes.filter(note => note.id !== id));
@@ -50,16 +82,19 @@ function App() {
         toggleDarkMode={toggleDarkMode}
         addNote={addNote} 
       />
-      {notes.map((note) => (
+       {getStateNotes().map((note) => (
         <Note
-          key={note.id} // Use the id from the note object as the key
-          id={note.id} // And also as the id for the delete functionality
+          key={note.id}
+          id={note.id}
+          complete={note.complete}
           content={note.content}
           onCheck={deleteNote}
+          toggleCompletion={toggleCompletion}
         />
       ))}
       <NoteState 
         count={count}
+        setState={setState}
       />
     </div>
   );

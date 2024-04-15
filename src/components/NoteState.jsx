@@ -8,9 +8,9 @@ function NoteState(props){
                         {props.count <= 1 ? `${props.count}  item left` : `${props.count}  items left`}
                     </button>
                     <div className="flex gap-2	text-gray-500 ">
-                        <button className="text-sm hover:text-white focus:text-sky-500">All</button>
-                        <button className="text-sm hover:text-white focus:text-sky-500">Active</button>
-                        <button className="text-sm hover:text-white focus:text-sky-500">Completed</button>
+                        <button className="text-sm hover:text-white focus:text-sky-500" onClick={() => props.setState('all')}>All</button>
+                        <button className="text-sm hover:text-white focus:text-sky-500" onClick={() => props.setState('active')}>Active</button>
+                        <button className="text-sm hover:text-white focus:text-sky-500" onClick={() => props.setState('completed')}>Completed</button>
                     </div>
                     <button className="text-xs text-gray-500 hover:text-white ">Clear Completed</button>
             </div>
