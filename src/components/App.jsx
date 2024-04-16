@@ -87,14 +87,15 @@ function App() {
         addNote={addNote} 
       />
        {getStateNotes().map((note) => (
-        <Note
-          key={note.id}
-          id={note.id}
-          complete={note.complete}
-          content={note.content}
-          onCheck={deleteNote}
-          toggleCompletion={toggleCompletion}
-        />
+          <Note
+            key={note.id}
+            id={note.id}
+            count={count}
+            complete={note.complete}
+            content={note.content}
+            onCheck={deleteNote}
+            toggleCompletion={toggleCompletion}
+          />
       ))}
       <NoteState 
         count={count}

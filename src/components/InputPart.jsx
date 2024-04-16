@@ -22,7 +22,7 @@ function InputPart({ isDarkMode, toggleDarkMode, addNote }) {
   return (
     <section className="bg-cover h-52" style={{ backgroundImage: `url(${isDarkMode ? UpperDarkBg : UpperLightBg})` }}>
       <div className="flex flex-col justify-center items-center">
-        <div className="flex flex-row justify-between my-10 w-1/3">
+        <div className="flex flex-row justify-between my-10 w-1/3 ">
           <p className="text-2xl uppercase font-bold text-white">T o d o</p>
           {isDarkMode ? (
             <SunIcon onClick={toggleDarkMode} />
@@ -30,7 +30,7 @@ function InputPart({ isDarkMode, toggleDarkMode, addNote }) {
             <MoonIcon onClick={toggleDarkMode} />
           )}
         </div>
-        <form className="w-1/3" onSubmit={handleSubmit}>
+        <form className="w-1/3 xs:w-80" onSubmit={handleSubmit}>
           <label className="bg-white w-full flex flex-row items-center dark:bg-gray-800">
             <button 
               className="w-5 h-5 rounded-full border-2 border-gray-500 bg-transparent relative left-5"

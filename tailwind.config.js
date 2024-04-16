@@ -7,6 +7,14 @@ module.exports = {
       backgroundImage: theme => ({
         'check-gradient': 'linear-gradient(to right, hsl(192, 100%, 67%),  hsl(280, 87%, 65%))', // 渐变色
       }),
+      screens: {
+        'xs': '320px',  // 新增更小的斷點
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
     },
   },
   plugins: [],
